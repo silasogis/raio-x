@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raio-X do ponto · Av. do Batel, 1230</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1d1d1b;background:#f6f5f2}
+.wrap{display:flex;flex-direction:column;min-height:100vh}
+#map{height:55vh;width:100%}
+.card{padding:18px 18px 28px;max-width:720px;margin:0 auto;width:100%}
+h1{font-size:20px;margin:0 0 4px}.sub{color:#666;font-size:14px;margin:0 0 14px}
+.zona{display:inline-block;background:#2f5f8a;color:#fff;border-radius:6px;padding:3px 8px;font-size:13px;margin-bottom:14px}
+.destaque{background:#fff;border-left:4px solid #c8423b;padding:12px 14px;border-radius:6px;margin:0 0 16px;font-size:15px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:6px;overflow:hidden;font-size:14px;margin-bottom:16px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid #eee}th:first-child,td:first-child{text-align:left}
+th{background:#eef2f6;font-weight:600}
+h2{font-size:16px;margin:20px 0 8px}
+ul{padding-left:18px;margin:0 0 16px;font-size:14px;line-height:1.6}
+.btn{display:block;text-align:center;background:#c8423b;color:#fff;text-decoration:none;padding:14px;border-radius:8px;font-weight:600;font-size:16px;margin:20px 0}
+.nota{font-size:12px;color:#777;line-height:1.5}
+.leg{font-size:12px;color:#444;margin:8px 0 14px}.leg span{display:inline-block;width:12px;height:12px;border-radius:2px;margin:0 4px -2px 10px}
+@media(min-width:900px){.wrap{flex-direction:row}#map{height:100vh;width:58%;position:sticky;top:0}.card{width:42%;max-width:none;height:100vh;overflow:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div id="map"></div>
+<div class="card">
+<h1>Raio-X do ponto</h1>
+<p class="sub">Av. do Batel, 1230 · Batel, Curitiba · Consultório odontológico</p>
+<div class="zona">ZR4 · Zona Residencial 4</div>
+<div class="destaque">Em até 10 minutos a pé há <b>46 domicílios por consultório</b>, 84% menos que a média de Curitiba (296).</div>
+<div class="leg">Áreas a pé:<span style="background:#4f86b5"></span>5 min<span style="background:#8fb6d6"></span>10 min<span style="background:#c9dceb"></span>15 min<span style="background:#c8423b;border-radius:50%"></span>consultórios</div>
+<table>
+<tr><th>A pé</th><th>Domicílios</th><th>Consultórios</th><th>Dom./consultório</th></tr>
+<tr><td>5 min</td><td>1.397</td><td>42</td><td>33</td></tr>
+<tr><td>10 min</td><td>6.538</td><td>142</td><td>46</td></tr>
+<tr><td>15 min</td><td>19.753</td><td>306</td><td>65</td></tr>
+<tr><td>Média de Curitiba</td><td></td><td></td><td>296</td></tr>
+</table>
+<p class="nota">Outras 19 empresas até 10 min a pé têm odontologia como atividade secundária. Nos últimos 12 meses, 948 negócios de todos os ramos abriram nesse raio.</p>
+<h2>No mesmo prédio</h2>
+<p class="nota" style="font-size:14px;color:#1d1d1b">Outros 10 consultórios funcionam no mesmo edifício, entre eles:</p>
+<ul>
+<li>Espaço Sorriso Odontologia</li><li>Phsouza Odontologia</li><li>Rafinatto Saúde e Estética Odontológica</li><li>Clínica Amare</li><li>Clínica Odontológica Claudio A. C. Fatuch</li><li>Dra. Ana Repula – Odontologia Estética e Restauradora</li><li>Odontoartdesign</li><li>La Ore</li><li>AV Odontologia</li>
+</ul>
+<h2>Sua opinião vale muito</h2>
+<p class="nota" style="font-size:14px;color:#1d1d1b">Esta é uma versão de teste. Os números batem com o que você vive no dia a dia? Faltou algum concorrente? Seus pacientes vêm de perto ou de outros bairros?</p>
+<a class="btn" href="LINK_DO_FORMULARIO" target="_blank">Dar minha opinião (2 min)</a>
+<p class="nota">Análise preliminar, sujeita a verificação. Domicílios: CNEFE/IBGE (Censo 2022). Empresas: CNPJs ativos da Receita Federal (09/2026). Áreas a pé a 4,8 km/h pela malha do OpenStreetMap. Zoneamento: IPPUC, Lei 15.511/2019; confirme o uso na Consulta Amarela. Pacientes de outros bairros e renda da região ainda não entram na análise.<br><br>Raio-X do ponto · by SOMAP</p>
+</div>
+</div>
+<script>
+const P=[-49.2850379,-25.4413445];
+const ISO={5:[[-49.28868,-25.43947],[-49.28882,-25.43915],[-49.28867,-25.43884],[-49.28832,-25.4387],[-49.28776,-25.43903],[-49.28724,-25.4387],[-49.28688,-25.43881],[-49.28672,-25.43912],[-49.28706,-25.43968],[-49.28569,-25.43908],[-49.28534,-25.43895],[-49.28499,-25.43909],[-49.28234,-25.43989],[-49.28198,-25.44],[-49.28182,-25.44032],[-49.28194,-25.44064],[-49.28255,-25.44233],[-49.28254,-25.44268],[-49.28281,-25.44293],[-49.28379,-25.44468],[-49.2838,-25.44503],[-49.28407,-25.44527],[-49.28445,-25.44526],[-49.28474,-25.44496],[-49.28533,-25.44498],[-49.28556,-25.44471],[-49.28552,-25.44437],[-49.28511,-25.44412],[-49.2865,-25.44438],[-49.28698,-25.44427],[-49.28713,-25.4439],[-49.28675,-25.44338],[-49.28871,-25.44337],[-49.28909,-25.4434],[-49.28938,-25.44318],[-49.28941,-25.44284],[-49.28917,-25.44257],[-49.28652,-25.44142],[-49.28797,-25.44162],[-49.28835,-25.44163],[-49.28862,-25.44139],[-49.28863,-25.44104],[-49.28859,-25.44061],[-49.28813,-25.43998]],
+10:[[-49.29172,-25.43897],[-49.29161,-25.43864],[-49.29002,-25.43796],[-49.29045,-25.437],[-49.29031,-25.43668],[-49.28825,-25.43583],[-49.28787,-25.43583],[-49.2872,-25.43685],[-49.28566,-25.43628],[-49.2853,-25.43641],[-49.28352,-25.43714],[-49.28316,-25.43701],[-49.28281,-25.43714],[-49.28106,-25.43715],[-49.28071,-25.43701],[-49.28036,-25.43714],[-49.28021,-25.43746],[-49.28054,-25.43794],[-49.27968,-25.43839],[-49.27933,-25.43826],[-49.27875,-25.4386],[-49.2786,-25.43891],[-49.27875,-25.43923],[-49.27889,-25.4409],[-49.27889,-25.44124],[-49.27915,-25.44149],[-49.28052,-25.44303],[-49.28052,-25.44337],[-49.28078,-25.44362],[-49.28146,-25.4446],[-49.28083,-25.4445],[-49.28056,-25.44475],[-49.28056,-25.44509],[-49.28083,-25.44534],[-49.28265,-25.44726],[-49.28266,-25.4476],[-49.28292,-25.44784],[-49.28435,-25.44823],[-49.28462,-25.44799],[-49.28658,-25.44751],[-49.28696,-25.44751],[-49.28731,-25.44711],[-49.28776,-25.44702],[-49.28791,-25.44666],[-49.28865,-25.44593],[-49.2886,-25.44559],[-49.2882,-25.44529],[-49.29031,-25.44589],[-49.29069,-25.44589],[-49.29096,-25.44565],[-49.29097,-25.44531],[-49.29044,-25.44495],[-49.29134,-25.44495],[-49.29172,-25.44496],[-49.29223,-25.44439],[-49.29211,-25.44399],[-49.28984,-25.44237],[-49.2904,-25.44245],[-49.29068,-25.44221],[-49.29069,-25.44187],[-49.2903,-25.44157],[-49.29172,-25.43897]],
+15:[[-49.29367,-25.44158],[-49.29484,-25.4419],[-49.29512,-25.44166],[-49.29565,-25.44048],[-49.29551,-25.44016],[-49.29459,-25.43976],[-49.29503,-25.4388],[-49.29489,-25.43848],[-49.29438,-25.43736],[-49.29439,-25.43701],[-49.29413,-25.43676],[-49.29374,-25.43548],[-49.29375,-25.43509],[-49.29308,-25.4347],[-49.29334,-25.43386],[-49.29318,-25.43355],[-49.29282,-25.43344],[-49.29248,-25.43359],[-49.29213,-25.43439],[-49.2919,-25.4341],[-49.29215,-25.43327],[-49.29189,-25.43302],[-49.29151,-25.43301],[-49.291,-25.43372],[-49.29058,-25.43381],[-49.28919,-25.43333],[-49.28883,-25.43346],[-49.28833,-25.43448],[-49.28612,-25.43364],[-49.28577,-25.43377],[-49.28529,-25.43467],[-49.28343,-25.43403],[-49.28312,-25.43424],[-49.28173,-25.4347],[-49.28136,-25.4347],[-49.27984,-25.43604],[-49.27833,-25.43471],[-49.27795,-25.43471],[-49.27582,-25.43656],[-49.27567,-25.43688],[-49.2754,-25.43701],[-49.2749,-25.43723],[-49.27489,-25.43767],[-49.27526,-25.43797],[-49.27531,-25.43948],[-49.27531,-25.43983],[-49.2764,-25.4404],[-49.27595,-25.44147],[-49.27609,-25.44179],[-49.27797,-25.44255],[-49.27737,-25.44373],[-49.27749,-25.44403],[-49.27853,-25.44447],[-49.27802,-25.44594],[-49.27829,-25.44618],[-49.27968,-25.44664],[-49.27913,-25.44792],[-49.27927,-25.44825],[-49.28066,-25.44882],[-49.28018,-25.45],[-49.28033,-25.45031],[-49.28259,-25.4512],[-49.28297,-25.4512],[-49.28324,-25.45096],[-49.28516,-25.45055],[-49.28554,-25.45056],[-49.28581,-25.45031],[-49.28651,-25.44918],[-49.28655,-25.45009],[-49.28688,-25.45026],[-49.28725,-25.45016],[-49.28747,-25.44954],[-49.28898,-25.45005],[-49.28931,-25.44993],[-49.28995,-25.44876],[-49.29035,-25.44863],[-49.29048,-25.44823],[-49.29231,-25.44796],[-49.29269,-25.44796],[-49.29297,-25.44772],[-49.29376,-25.44722],[-49.29369,-25.44769],[-49.29395,-25.44795],[-49.29433,-25.44795],[-49.29478,-25.44735],[-49.29578,-25.44765],[-49.29666,-25.44636],[-49.29657,-25.44596],[-49.29243,-25.44402]]};
+const COMP="-49.28384,-25.44097,1;-49.28551,-25.44365,19;-49.28787,-25.44096,2;-49.28223,-25.44223,1;-49.28792,-25.44211,6;-49.28359,-25.44407,13;-49.28334,-25.44402,3;-49.28513,-25.44459,2;-49.28286,-25.44395,1;-49.28567,-25.44473,1;-49.2855,-25.44485,10;-49.28882,-25.44044,1;-49.28188,-25.4435,3;-49.28266,-25.44427,5;-49.28846,-25.43932,1;-49.28558,-25.44514,2;-49.28573,-25.44515,2;-49.28852,-25.44385,3;-49.28046,-25.44206,1;-49.28683,-25.44531,1;-49.28872,-25.43861,1;-49.28766,-25.4451,10;-49.28325,-25.44551,2;-49.28005,-25.43994,1;-49.28257,-25.44557,1;-49.28989,-25.44329,5;-49.28218,-25.44542,1;-49.28459,-25.44616,2;-49.28758,-25.43702,1;-49.28521,-25.44627,7;-49.28088,-25.44462,1;-49.28033,-25.44447,5;-49.27918,-25.44139,9;-49.28127,-25.43728,1;-49.27928,-25.44267,9;-49.28355,-25.44658,1;-49.27905,-25.44155,5;-49.29031,-25.44395,1;-49.279,-25.44159,11;-49.28957,-25.44498,3;-49.28717,-25.44656,5;-49.27991,-25.43821,1;-49.28963,-25.44521,1;-49.28833,-25.43604,1;-49.28941,-25.44604,4;-49.27824,-25.44125,5;-49.27889,-25.43847,3;-49.29132,-25.44395,1;-49.27904,-25.44454,1;-49.28046,-25.43647,2;-49.27886,-25.43824,1;-49.28987,-25.44632,5;-49.28057,-25.43597,1;-49.28081,-25.43581,1;-49.2865,-25.43474,1;-49.28553,-25.44808,1";
+const map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:P,zoom:15});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}));
+map.on('load',()=>{
+ const cor={15:'#c9dceb',10:'#8fb6d6',5:'#4f86b5'};
+ [15,10,5].forEach(m=>{const r=ISO[m].slice();r.push(r[0]);
+  map.addSource('iso'+m,{type:'geojson',data:{type:'Feature',geometry:{type:'Polygon',coordinates:[r]}}});
+  map.addLayer({id:'iso'+m,type:'fill',source:'iso'+m,paint:{'fill-color':cor[m],'fill-opacity':0.6,'fill-outline-color':'#2f5f8a'}});});
+ const feats=COMP.split(';').map(s=>{const[a,b,n]=s.split(',').map(Number);return{type:'Feature',properties:{n},geometry:{type:'Point',coordinates:[a,b]}}});
+ map.addSource('c',{type:'geojson',data:{type:'FeatureCollection',features:feats}});
+ map.addLayer({id:'c',type:'circle',source:'c',paint:{'circle-color':'#c8423b','circle-stroke-color':'#fff','circle-stroke-width':1,'circle-radius':['interpolate',['linear'],['get','n'],1,5,19,14]}});
+ map.addLayer({id:'cn',type:'symbol',source:'c',filter:['>=',['get','n'],3],layout:{'text-field':['to-string',['get','n']],'text-size':11,'text-font':['Open Sans Bold']},paint:{'text-color':'#fff'}});
+ map.on('click','c',e=>{const n=e.features[0].properties.n;new maplibregl.Popup().setLngLat(e.lngLat).setHTML(n+(n>1?' consultórios neste endereço':' consultório neste endereço')).addTo(map);});
+ new maplibregl.Marker({color:'#1d1d1b'}).setLngLat(P).setPopup(new maplibregl.Popup().setHTML('<b>Av. do Batel, 1230</b><br>+ 10 consultórios no mesmo prédio')).addTo(map);
+});
+</script>
+</body>
+</html>
