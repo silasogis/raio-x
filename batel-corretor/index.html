@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Raio-X do ponto · Av. Sete de Setembro, 4620</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1d1d1b;background:#f6f5f2}
+.wrap{display:flex;flex-direction:column;min-height:100vh}
+#map{height:50vh;width:100%}
+.card{padding:18px 18px 28px;max-width:720px;margin:0 auto;width:100%}
+h1{font-size:20px;margin:0 0 4px}.sub{color:#666;font-size:14px;margin:0 0 14px}
+.zona{display:inline-block;background:#2f5f8a;color:#fff;border-radius:6px;padding:3px 8px;font-size:13px;margin-bottom:14px}
+.destaque{background:#fff;border-left:4px solid #2e7d4f;padding:12px 14px;border-radius:6px;margin:0 0 16px;font-size:15px;line-height:1.45}
+h2{font-size:16px;margin:20px 0 8px}
+.resumo{font-size:14px;margin:0 0 6px}
+ul.rk{list-style:none;margin:0 0 10px;padding:0;background:#fff;border-radius:6px}
+ul.rk li{padding:10px 12px;border-bottom:1px solid #eee}
+.rk-top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.rk-nome{font-weight:600;font-size:15px}.rk-idx{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rk-det{font-size:12.5px;color:#666;margin-top:3px;line-height:1.4}
+.rk-bar{height:6px;border-radius:3px;background:#eee;margin-top:7px;overflow:hidden}.rk-bar span{display:block;height:100%;border-radius:3px}
+.o{color:#2e7d4f}.s{color:#b4531a}.bo{background:#2e7d4f}.bs{background:#b4531a}
+.como{font-size:13px;color:#444;line-height:1.5;background:#eef2f6;border-radius:6px;padding:10px 12px;margin:0 0 16px}
+.btn{display:block;text-align:center;background:#2f5f8a;color:#fff;text-decoration:none;padding:14px;border-radius:8px;font-weight:600;font-size:16px;margin:14px 0}
+.btn.sec{background:#fff;color:#2f5f8a;border:2px solid #2f5f8a}
+.nota{font-size:12px;color:#777;line-height:1.5}
+.leg{font-size:12px;color:#444;margin:8px 0 14px}.leg span{display:inline-block;width:12px;height:12px;border-radius:2px;margin:0 4px -2px 10px}
+@media(min-width:900px){.wrap{flex-direction:row}#map{height:100vh;width:55%;position:sticky;top:0}.card{width:45%;max-width:none;height:100vh;overflow:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div id="map"></div>
+<div class="card">
+<h1>Que negócio combina com este ponto?</h1>
+<p class="sub">Av. Sete de Setembro, 4620 · Batel, Curitiba · exemplo de análise</p>
+<div class="zona">EE · Eixo Estrutural</div>
+<div class="destaque">Para este ponto, <b>mercado / minimercado</b> é o ramo menos disputado: cada mercado tem <b>696 domicílios</b> a até 10 min a pé, contra 257 na média de Curitiba. Pet shop e padaria vêm logo depois.</div>
+<div class="leg">Áreas a pé:<span style="background:#4f86b5"></span>5 min<span style="background:#8fb6d6"></span>10 min<span style="background:#c9dceb"></span>15 min</div>
+<p class="resumo"><b>9.053</b> domicílios a até 10 min a pé · <b>1.216</b> negócios abertos na região nos últimos 12 meses.</p>
+<h2>Ranking dos ramos</h2>
+<ul class="rk">
+<li><div class="rk-top"><span class="rk-nome">1. Mercado / minimercado</span><span class="rk-idx o">índice 2,71</span></div><div class="rk-det"><span class="o">Mais demanda por concorrente que a média</span> · 13 concorrentes a 10 min · 696 domicílios por concorrente (cidade: 257)</div><div class="rk-bar"><span class="bo" style="width:100%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">2. Pet shop</span><span class="rk-idx o">índice 1,44</span></div><div class="rk-det"><span class="o">Mais demanda por concorrente que a média</span> · 12 concorrentes a 10 min · 754 domicílios por concorrente (cidade: 525)</div><div class="rk-bar"><span class="bo" style="width:53%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">3. Padaria e confeitaria</span><span class="rk-idx o">índice 1,43</span></div><div class="rk-det"><span class="o">Mais demanda por concorrente que a média</span> · 34 concorrentes a 10 min · 266 domicílios por concorrente (cidade: 186)</div><div class="rk-bar"><span class="bo" style="width:53%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">4. Salão de beleza</span><span class="rk-idx o">índice 1,40</span></div><div class="rk-det"><span class="o">Mais demanda por concorrente que a média</span> · 108 concorrentes a 10 min · 84 domicílios por concorrente (cidade: 60)</div><div class="rk-bar"><span class="bo" style="width:52%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">5. Academia</span><span class="rk-idx s">índice 0,60</span></div><div class="rk-det"><span class="s">Concorrência acima da média</span> · 27 concorrentes a 10 min · 335 domicílios por concorrente (cidade: 559)</div><div class="rk-bar"><span class="bs" style="width:22%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">6. Restaurante</span><span class="rk-idx s">índice 0,52</span></div><div class="rk-det"><span class="s">Concorrência acima da média</span> · 125 concorrentes a 10 min · 72 domicílios por concorrente (cidade: 139)</div><div class="rk-bar"><span class="bs" style="width:19%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">7. Lavanderia</span><span class="rk-idx s">índice 0,44</span></div><div class="rk-det"><span class="s">Concorrência acima da média</span> · 14 concorrentes a 10 min · 647 domicílios por concorrente (cidade: 1.479)</div><div class="rk-bar"><span class="bs" style="width:16%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">8. Farmácia / drogaria</span><span class="rk-idx s">índice 0,36</span></div><div class="rk-det"><span class="s">Concorrência acima da média</span> · 39 concorrentes a 10 min · 232 domicílios por concorrente (cidade: 652)</div><div class="rk-bar"><span class="bs" style="width:13%"></span></div></li>
+<li><div class="rk-top"><span class="rk-nome">9. Consultório odontológico</span><span class="rk-idx s">índice 0,15</span></div><div class="rk-det"><span class="s">Concorrência acima da média</span> · 204 concorrentes a 10 min · 44 domicílios por concorrente (cidade: 296)</div><div class="rk-bar"><span class="bs" style="width:6%"></span></div></li>
+</ul>
+<div class="como"><b>Como ler o índice:</b> domicílios por concorrente a até 10 min a pé, divididos pela média de Curitiba. Acima de 1,0, sobra mais demanda por concorrente do que no resto da cidade. Abaixo de 1,0, a concorrência é maior.<br><br>
+<b>Para o corretor:</b> cruze o ranking com o tipo de imóvel. Loja térrea com frente para a rua combina com mercado, padaria e pet shop; sala em andar alto combina mais com consultório ou escritório.</div>
+<h2>Sua opinião vale muito</h2>
+<p class="nota" style="font-size:14px;color:#1d1d1b">Esta é uma versão de teste. O ranking faz sentido para este trecho do Batel? Você usaria isso para anunciar um imóvel ou sugerir um inquilino ao proprietário?</p>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSccs2Bo5yiVDp-VkcOaWiZiCRuuNhcDURy0sfx09RePFW91ZQ/viewform?usp=sharing&ouid=115138184068814207732" target="_blank">Dar minha opinião (2 min)</a>
+<a class="btn sec" href="https://wa.me/5541999894082?text=Quero%20testar%20o%20Raio-X%20com%20um%20im%C3%B3vel%20meu" target="_blank">Quero testar com um imóvel meu</a>
+<p class="nota">Análise preliminar, sujeita a verificação. Considera só os moradores a até 10 min a pé: negócios que atraem público de longe (academias, restaurantes, clínicas de referência) podem ir bem mesmo com índice baixo. Grandes redes contam como um concorrente cada. Domicílios: CNEFE/IBGE (Censo 2022). Empresas: CNPJs ativos da Receita Federal (09/2026). Áreas a pé a 4,8 km/h pela malha do OpenStreetMap. Zoneamento: IPPUC, Lei 15.511/2019; confirme o uso na Consulta Amarela.<br><br>Raio-X do ponto · by SOMAP</p>
+</div>
+</div>
+<script>
+const P=[-49.283821,-25.443882];
+const ISO={"5":[[-49.2844,-25.44669],[-49.285,-25.44688],[-49.2859,-25.44709],[-49.28625,-25.44696],[-49.28679,-25.44682],[-49.28716,-25.44689],[-49.28748,-25.4467],[-49.28755,-25.44636],[-49.28697,-25.4458],[-49.28811,-25.44609],[-49.28838,-25.44585],[-49.28838,-25.4455],[-49.28727,-25.44494],[-49.28764,-25.44469],[-49.28792,-25.44445],[-49.28792,-25.44411],[-49.28737,-25.44362],[-49.28614,-25.44181],[-49.28612,-25.44146],[-49.28585,-25.44122],[-49.28547,-25.44123],[-49.28521,-25.44148],[-49.28325,-25.44199],[-49.2829,-25.44198],[-49.28232,-25.4419],[-49.28205,-25.44214],[-49.28204,-25.44248],[-49.28235,-25.44275],[-49.28124,-25.44264],[-49.28086,-25.44264],[-49.28052,-25.44303],[-49.28052,-25.44337],[-49.28175,-25.444],[-49.28128,-25.44508],[-49.28142,-25.44539],[-49.28247,-25.44583],[-49.28312,-25.4462],[-49.28262,-25.44743],[-49.28277,-25.44775],[-49.28312,-25.44788],[-49.28347,-25.44774],[-49.28404,-25.44655]],"10":[[-49.29157,-25.44756],[-49.29185,-25.44729],[-49.29185,-25.44694],[-49.29109,-25.44651],[-49.29152,-25.44557],[-49.29139,-25.44525],[-49.28881,-25.44419],[-49.29007,-25.44398],[-49.29043,-25.44387],[-49.2906,-25.44356],[-49.29048,-25.44324],[-49.29006,-25.44199],[-49.29009,-25.44165],[-49.28984,-25.44139],[-49.28946,-25.44136],[-49.28917,-25.44158],[-49.28708,-25.44159],[-49.2868,-25.44116],[-49.28816,-25.44166],[-49.28851,-25.44153],[-49.28867,-25.44122],[-49.28849,-25.44087],[-49.28856,-25.44044],[-49.28843,-25.43971],[-49.28895,-25.43979],[-49.28924,-25.43957],[-49.28926,-25.43922],[-49.28851,-25.43874],[-49.28813,-25.43874],[-49.28743,-25.43874],[-49.28705,-25.43872],[-49.28676,-25.43895],[-49.28674,-25.4393],[-49.2867,-25.43998],[-49.28553,-25.43898],[-49.28515,-25.43899],[-49.28373,-25.44027],[-49.28276,-25.43915],[-49.28231,-25.43927],[-49.28135,-25.44124],[-49.27942,-25.44052],[-49.27906,-25.44064],[-49.27775,-25.44135],[-49.27739,-25.44148],[-49.27718,-25.44194],[-49.27732,-25.44226],[-49.27918,-25.44301],[-49.27843,-25.44337],[-49.27793,-25.44357],[-49.27782,-25.44406],[-49.27809,-25.4443],[-49.27916,-25.44595],[-49.27915,-25.44629],[-49.27942,-25.44654],[-49.27983,-25.448],[-49.27982,-25.44834],[-49.28008,-25.4486],[-49.28133,-25.45024],[-49.28133,-25.45059],[-49.28161,-25.45083],[-49.28199,-25.45083],[-49.28225,-25.45058],[-49.28423,-25.4502],[-49.28461,-25.4502],[-49.28489,-25.44996],[-49.28663,-25.44922],[-49.28714,-25.44941],[-49.28823,-25.44966],[-49.28849,-25.44941],[-49.28889,-25.44838],[-49.29,-25.44877],[-49.29035,-25.44863],[-49.29048,-25.44823]],"15":[[-49.29498,-25.44705],[-49.2951,-25.44665],[-49.2945,-25.44613],[-49.29418,-25.44505],[-49.29417,-25.44463],[-49.2939,-25.44442],[-49.29289,-25.44311],[-49.2929,-25.44276],[-49.29265,-25.44251],[-49.29227,-25.44249],[-49.29199,-25.44273],[-49.2896,-25.44279],[-49.29021,-25.44248],[-49.29057,-25.44236],[-49.29072,-25.44204],[-49.29058,-25.44172],[-49.29091,-25.44048],[-49.29228,-25.44088],[-49.29255,-25.44064],[-49.29256,-25.4403],[-49.29136,-25.43968],[-49.2917,-25.43879],[-49.29142,-25.43852],[-49.29097,-25.43601],[-49.29098,-25.43567],[-49.29072,-25.43542],[-49.29034,-25.43541],[-49.29006,-25.43565],[-49.28825,-25.43583],[-49.28787,-25.43583],[-49.28761,-25.43606],[-49.28465,-25.43585],[-49.28428,-25.43584],[-49.28316,-25.43682],[-49.28213,-25.43594],[-49.28175,-25.43594],[-49.28071,-25.43683],[-49.27985,-25.43623],[-49.27949,-25.43636],[-49.27935,-25.43668],[-49.28001,-25.43746],[-49.27866,-25.43752],[-49.27828,-25.43753],[-49.27742,-25.43831],[-49.27558,-25.43897],[-49.27484,-25.43921],[-49.27484,-25.43971],[-49.27495,-25.44024],[-49.27391,-25.43999],[-49.27358,-25.44037],[-49.27357,-25.44071],[-49.27448,-25.4412],[-49.27392,-25.44243],[-49.27406,-25.44274],[-49.27634,-25.44364],[-49.27579,-25.44414],[-49.27527,-25.44432],[-49.27522,-25.44476],[-49.27636,-25.44545],[-49.27576,-25.44663],[-49.27603,-25.44703],[-49.27794,-25.44855],[-49.27759,-25.4488],[-49.27757,-25.44915],[-49.27784,-25.4494],[-49.27853,-25.45072],[-49.27853,-25.45107],[-49.27879,-25.45131],[-49.28052,-25.45207],[-49.28008,-25.45259],[-49.27918,-25.45257],[-49.27884,-25.45295],[-49.27887,-25.45331],[-49.27915,-25.45354],[-49.27962,-25.45346],[-49.28044,-25.4539],[-49.28074,-25.45411],[-49.28112,-25.45406],[-49.28135,-25.45368],[-49.28198,-25.45359],[-49.28243,-25.45271],[-49.28447,-25.45345],[-49.28493,-25.45317],[-49.28495,-25.45244],[-49.28557,-25.45266],[-49.28594,-25.45247],[-49.28802,-25.45316],[-49.28833,-25.45296],[-49.28854,-25.45185],[-49.29,-25.45237],[-49.29035,-25.45225],[-49.29106,-25.45086],[-49.29221,-25.45114],[-49.29248,-25.45089],[-49.29323,-25.44993],[-49.29361,-25.44992],[-49.29387,-25.44969],[-49.29483,-25.44889],[-49.29518,-25.44876],[-49.29533,-25.44844],[-49.29519,-25.44812],[-49.29455,-25.44784],[-49.29498,-25.44705]]};
+const map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:P,zoom:15});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}));
+map.on('load',()=>{
+ const cor={15:'#c9dceb',10:'#8fb6d6',5:'#4f86b5'};
+ ['15','10','5'].forEach(m=>{const r=ISO[m].slice();r.push(r[0]);
+  map.addSource('iso'+m,{type:'geojson',data:{type:'Feature',geometry:{type:'Polygon',coordinates:[r]}}});
+  map.addLayer({id:'iso'+m,type:'fill',source:'iso'+m,paint:{'fill-color':cor[m],'fill-opacity':0.6,'fill-outline-color':'#2f5f8a'}});});
+ const b=new maplibregl.LngLatBounds();ISO['15'].forEach(c=>b.extend(c));map.fitBounds(b,{padding:30,maxZoom:16});
+ new maplibregl.Marker({color:'#1d1d1b'}).setLngLat(P).setPopup(new maplibregl.Popup().setHTML('<b>Av. Sete de Setembro, 4620</b><br>Batel · Eixo Estrutural')).addTo(map);
+});
+</script>
+</body>
+</html>
